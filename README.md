@@ -8,7 +8,7 @@ npm install
 npm run dev
 ```
 
-The server will run successfully. However, if you hit any endpoint such as openning http://localhost:5000, you will see error:
+The server will first run successfully. However, if you hit any endpoint such as openning http://localhost:5000, you will see error:
 
 ```shell
 Error: async hook stack has become corrupted (actual: 73, expected: 0)
@@ -24,3 +24,13 @@ Error: async hook stack has become corrupted (actual: 73, expected: 0)
 10: 0x7fff2057a621 start [/usr/lib/system/libdyld.dylib]
 11: 0x5
 ```
+
+1. I found if removing OpenTelemetry by commenting out
+https://github.com/Hongbo-Miao/bug-nodejs-16/blob/main/src/index.ts#L2
+The server won't have any issue.
+
+2. Or commenting out Sentry
+https://github.com/Hongbo-Miao/bug-nodejs-16/blob/main/src/app.ts#L7
+The server won't have any issue neither.
+
+So I am guessing some code in OpenTelemetry affects Sentry.
