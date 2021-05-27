@@ -27,19 +27,23 @@ Error: async hook stack has become corrupted (actual: 73, expected: 0)
 11: 0x5
 ```
 
-## My Findings
+## Some Findings
 
 1. I found if removing OpenTelemetry by commenting out
 https://github.com/Hongbo-Miao/bug-nodejs-16/blob/main/src/index.ts#L2
 The server won't have any issue.
 
-2. Or commenting out Sentry
+1. Or commenting out Sentry
 https://github.com/Hongbo-Miao/bug-nodejs-16/blob/main/src/app.ts#L7
 The server won't have any issue neither.
 
 So I am guessing some code in OpenTelemetry affects Sentry.
 
-This issue only happens in Node.js 16, no issue in Node.js 14 or 15.
+Check
+https://github.com/getsentry/sentry-javascript/issues/3585#issuecomment-849486728
+for more findings.
+
+This issue only happens since Node.js 16.2.0, not 16.1.0.
 
 ## Bug Ticket
 
