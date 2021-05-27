@@ -37,8 +37,6 @@ The server won't have any issue.
 https://github.com/Hongbo-Miao/bug-nodejs-16/blob/main/src/app.ts#L7
 The server won't have any issue neither.
 
-So I am guessing some code in OpenTelemetry affects Sentry.
-
 Check
 https://github.com/getsentry/sentry-javascript/issues/3585#issuecomment-849486728
 for more findings.
@@ -47,4 +45,4 @@ This issue only happens since Node.js 16.2.0, not 16.1.0.
 
 ## Bug Ticket
 
-https://github.com/getsentry/sentry-javascript/issues/3585
+https://github.com/nodejs/node/issues/38814
